@@ -1,16 +1,24 @@
 <template>
     <form @submit.prevent="signIn()">
         <div class="flex flex-col gap-[20px] mb-5">
-            
+            <div v-if="authError">
+                <div class="w-full bg-red-500 text-xs text-white rounded-md shadow-lg " role="alert">
+                    <div class="flex p-4">
+                        {{ authErrorMessage }}
+                    </div>
+                </div>
+            </div>
             <div class="group">
                 <label class="font-semibold text-sm text-gray-600 pb-1 block">Username</label>
-                <input v-model="formData.username" :class="{ 'border-red-500' : hasError.username }" type="text" class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full" />
+                <input v-model="formData.username" :class="{ 'border-red-500': hasError.username }" type="text"
+                    class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full" />
                 <p v-if="hasError.username" class="text-xs mt-1 text-red-600 font-medium italic">Username is Required</p>
             </div>
-            
+
             <div class="group">
                 <label class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
-                <input v-model="formData.password" :class="{ 'border-red-500' : hasError.password }" type="password" class="border rounded-lg px-3 py-2 mt-1 text-sm w-full" />
+                <input v-model="formData.password" :class="{ 'border-red-500': hasError.password }" type="password"
+                    class="border rounded-lg px-3 py-2 mt-1 text-sm w-full" />
                 <p v-if="hasError.password" class="text-xs mt-1 text-red-600 font-medium italic">Password is Required</p>
             </div>
         </div>
@@ -25,7 +33,8 @@
     </form>
 </template>
 <script lang="ts">
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
+import User from '@/core/api/User'
 
 export default {
     name: 'SignInForm',
@@ -40,15 +49,23 @@ export default {
             password: false,
         })
 
-        const errorMessage = reactive({
-            username: 'Username required',
-            password: 'Password required',
-        })
+        const authError = ref(false)
+        const authErrorMessage = ref('')
 
         const signIn = () => {
             checkForm()
+            const user = new User(formData.username, formData.password)
+            const result = user.authenticate()
 
-
+            if (formData.username !== '' && formData.password !== '') {
+                if (result) {
+                    console.info('redirect to dashboard')
+                } else {
+                    authError.value = true
+                    authErrorMessage.value = 'Invalid credential was provided!'
+                    throw new Error(authErrorMessage.value)
+                }
+            }
         }
 
         const checkForm = () => {
@@ -68,7 +85,9 @@ export default {
         return {
             formData,
             signIn,
-            hasError
+            hasError,
+            authError,
+            authErrorMessage,
         }
     }
 }
