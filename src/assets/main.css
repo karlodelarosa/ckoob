@@ -2,3 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#app {
+    @apply bg-gray-200
+}
+
+input:disabled {
+    @apply bg-gray-200
+}
+
+button:disabled {
+    @apply bg-gray-600
+}

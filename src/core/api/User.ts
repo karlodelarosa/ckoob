@@ -3,7 +3,7 @@ export default class User {
     password: string = ''
 
     sampleUsername = 'master'
-    samplePassword = 'pa$$word'
+    samplePassword = 'password'
 
     constructor(username: string, password: string) {
         this.username = username

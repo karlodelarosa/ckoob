@@ -1,29 +1,28 @@
 <template>
     <form @submit.prevent="signIn()">
         <div class="flex flex-col gap-[20px] mb-5">
-            <div v-if="authError">
-                <div class="w-full bg-red-500 text-xs text-white rounded-md shadow-lg " role="alert">
-                    <div class="flex p-4">
-                        {{ authErrorMessage }}
-                    </div>
-                </div>
-            </div>
+
+            <ErrorAlert :hasError="authError" message="Invalid credential was provided!" />
+            <SuccessAlert :success="authSuccess" message="Authentication success!" />
+
             <div class="group">
                 <label class="font-semibold text-sm text-gray-600 pb-1 block">Username</label>
-                <input v-model="formData.username" :class="{ 'border-red-500': hasError.username }" type="text"
-                    class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full" />
+                <input :disabled="authSuccess" type="text" class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full" v-model="formData.username"
+                    :class="{ 'border-red-500': hasError.username || authError }" />
                 <p v-if="hasError.username" class="text-xs mt-1 text-red-600 font-medium italic">Username is Required</p>
             </div>
 
             <div class="group">
                 <label class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
-                <input v-model="formData.password" :class="{ 'border-red-500': hasError.password }" type="password"
-                    class="border rounded-lg px-3 py-2 mt-1 text-sm w-full" />
+                <input :disabled="authSuccess" v-model="formData.password" :class="{ 'border-red-500': hasError.password || authError }"
+                    type="password" class="border rounded-lg px-3 py-2 mt-1 text-sm w-full" />
                 <p v-if="hasError.password" class="text-xs mt-1 text-red-600 font-medium italic">Password is Required</p>
             </div>
         </div>
         <button type="submit"
-            class="group transition duration-200 bg-gray-800 hover:bg-black text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+            :disabled="authSuccess"
+            :class="{ 'pointer-events-none': authSuccess }"
+            class="group transition duration-200 bg-black hover:bg-gray-800 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
             <span class="inline-block mr-2">Login</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 class="w-4 h-4 inline-block">
@@ -34,11 +33,20 @@
 </template>
 <script lang="ts">
 import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import User from '@/core/api/User'
+import ErrorAlert from '../atom/alerts/ErrorAlert.vue'
+import SuccessAlert from '../atom/alerts/SuccessAlert.vue'
 
 export default {
     name: 'SignInForm',
+    components: {
+        ErrorAlert,
+        SuccessAlert,
+    },
     setup() {
+        const router = useRouter()
+
         const formData = reactive({
             username: '',
             password: '',
@@ -50,7 +58,7 @@ export default {
         })
 
         const authError = ref(false)
-        const authErrorMessage = ref('')
+        const authSuccess = ref(false)
 
         const signIn = () => {
             checkForm()
@@ -59,11 +67,12 @@ export default {
 
             if (formData.username !== '' && formData.password !== '') {
                 if (result) {
-                    console.info('redirect to dashboard')
+                    authError.value = false
+                    authSuccess.value = true
+
+                    router.push({ name: 'dashboard' })
                 } else {
                     authError.value = true
-                    authErrorMessage.value = 'Invalid credential was provided!'
-                    throw new Error(authErrorMessage.value)
                 }
             }
         }
@@ -87,11 +96,11 @@ export default {
             signIn,
             hasError,
             authError,
-            authErrorMessage,
+            authSuccess,
         }
     }
 }
 </script>
-<style lang="">
+<style>
     
 </style>
