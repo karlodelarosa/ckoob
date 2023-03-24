@@ -70,7 +70,11 @@ export default {
                     authError.value = false
                     authSuccess.value = true
 
-                    router.push({ name: 'dashboard' })
+                    setTimeout(() => {
+                        router.push({ name: 'Dashboard' })
+                    }, 3000)
+
+                    
                 } else {
                     authError.value = true
                 }

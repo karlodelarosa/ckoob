@@ -6,7 +6,7 @@ import Git from '@/components/atom/button/Git.vue'
 </script>
 
 <template>
-  <main class="bg-gray-100 h-screen">
+  <main class="bg-gradient-to-r from-[#30E8BF] to-[#FF8235] h-screen">
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md flex flex-col items-center justify-center h-full">
       <h1 class="font-bold text-center text-2xl mb-5">
         <BrandIcon />

@@ -1,9 +1,11 @@
 <template>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-       TEST content
+        <h1>qweqwe</h1>
     </div>
-  </template>
+</template>
   
-  <script lang="ts" setup>
-  
-  </script>
+<script lang="ts">
+export default {
+    name: 'Dashboard'
+}
+</script>
