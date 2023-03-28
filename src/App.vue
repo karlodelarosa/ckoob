@@ -12,7 +12,7 @@ import NavMenu from '@/components/organism/navigation/NavMenu.vue'
 
     <main>
       <router-view v-slot="{ Component }">
-        <transition appear enter-active-class="animate__animated animate__fadeIn">
+        <transition appear enter-active-class="animate__animated animate__fadeIn"  mode="out-in" >
           <component :is="Component"></component>
         </transition>
       </router-view>

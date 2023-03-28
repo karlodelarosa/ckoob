@@ -3,6 +3,7 @@ import SignIn from '../views/SignIn.vue'
 import TheDashboard from '../views/TheDashboard.vue'
 import TheReports from '../views/TheReports.vue'
 import TheProjects from '../views/TheProjects.vue'
+import AddProject from '../views/AddProject.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,7 +26,12 @@ const router = createRouter({
     {
       path: '/projects',
       name: 'Projects',
-      component: TheProjects
+      component: TheProjects,
+    },
+    {
+      path: '/projects/new',
+      name: 'NewProject',
+      component: AddProject,
     },
   ]
 })

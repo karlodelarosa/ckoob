@@ -1,7 +1,7 @@
 <template>
    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
       <div class="flex flex-row gap-4">
-         <div v-if="!addingNewContent"  class="min-w-[280px]">
+         <div class="min-w-[280px]">
             <div class="bg-white rounded p-5 mb-[20px]">
                <PanelHeader text="PROJECTS" />
                <SideMenu :items="sideMenuItems" />
@@ -21,54 +21,8 @@
                </solid-button>
             </div>
          </div>
-         <div v-if="addingNewContent" class="overflow-hidden bg-white shadow sm:rounded-lg flex-grow">
-            <div class="px-4 py-5 sm:px-6">
-               <h3 class="text-base font-semibold leading-6 text-gray-900">New Project</h3>
-               <div class="flex flex-row items-center gap-1 text-sm text-gray-500">
-                  Provide all necessary details of the project
-               </div>
-            </div>
-            <div class="border-t border-gray-200">
-               <dl class="pb-[15px]">
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                     <dt class="text-sm font-medium text-gray-500">Project name</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        <input type="text" class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full"/>
-                     </dd>
-                  </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                     <dt class="text-sm font-medium text-gray-500">Repository</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        <input type="text" class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full"/>
-                     </dd>
-                  </div>
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                     <dt class="text-sm font-medium text-gray-500">Tech Stack</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        <input type="text" class="border  rounded-lg px-3 py-2 mt-1 text-sm w-full"/>
-                     </dd>
-                  </div>
-                  
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                     <dt class="text-sm font-medium text-gray-500">Description</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        <textarea class="border resize-none rounded-lg px-3 py-2 mt-1 text-sm w-full" rows="4"></textarea>
-                     </dd>
-                  </div>
-
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                     <dt class="text-sm font-medium text-gray-500">Status</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        Set active
-                     </dd>
-                  </div>
-                  
-               </dl>
-            </div>
-
-            
-         </div>
-         <div v-if="!addingNewContent" class="overflow-hidden bg-white shadow sm:rounded-lg">
+         
+         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
                <h3 class="text-base font-semibold leading-6 text-gray-900">Deborah</h3>
                <div class="flex flex-row items-center gap-1 text-sm text-gray-500">
@@ -80,20 +34,24 @@
                <dl class="pb-[15px]">
                   <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                      <dt class="text-sm font-medium text-gray-500">Project name</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Project 1</dd>
                   </div>
                   <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                      <dt class="text-sm font-medium text-gray-500">Repository</dt>
-                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Backend Developer</dd>
+                     <dd class="mt-1 text-sm sm:col-span-2 sm:mt-0 underline text-blue-600 cursor-pointer hover:text-blue-500">https://www.github.com/project-1</dd>
                   </div>
                   <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                      <dt class="text-sm font-medium text-gray-500">Tech Stack</dt>
                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        Vuejs, nodeapi
+                        <div class="flex flex-row flex-wrap gap-1">
+                           <div class="bg-blue-600 text-white px-3 py-1 text-xs w-fit rounded">Vue</div>
+                           <div class="bg-blue-600 text-white px-3 py-1 text-xs w-fit rounded">Node JS</div>
+                           <div class="bg-blue-600 text-white px-3 py-1 text-xs w-fit rounded">Docker</div>
+                        </div>
                      </dd>
                   </div>
                   
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                      <dt class="text-sm font-medium text-gray-500">Description</dt>
                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute
                         sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint.
@@ -101,7 +59,7 @@
                         adipisicing reprehenderit deserunt qui eu.</dd>
                   </div>
 
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                      <dt class="text-sm font-medium text-gray-500">Status</dt>
                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Active</dd>
                   </div>
@@ -125,25 +83,14 @@
                </dl>
             </div>
          </div>
-         <div v-if="addingNewContent" class="min-w-[280px]">
-               <div class="flex flex-col items-center gap-2 p-3">
-                  <solid-button
-                     text="Save Project" 
-                     buttonType="success"
-                  />
-                  <solid-button
-                     @click="cancelAddingNewContent()"
-                     text="Cancel" 
-                     buttonType="neutral"
-                  />
-               </div>
-         </div>
+         
       </div>
    </div>
 </template>
  
 <script lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import PanelHeader from '@/components/atom/text/PanelHeader.vue'
 import SideMenu from '@/components/molecule/menu/SideMenu.vue'
 import SolidButton from '@/components/atom/button/SolidButton.vue'
@@ -158,11 +105,15 @@ export default {
       SolidButton
    },
    setup() {
+      const router =  useRouter()
       const isActive = ref(true)
       const addingNewContent = ref(false)
 
       const addProject = () => {
-         addingNewContent.value = true
+         // addingNewContent.value = true
+         router.push({
+            name: 'NewProject'
+         })
       }
 
       const cancelAddingNewContent = () => {
