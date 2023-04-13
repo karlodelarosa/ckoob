@@ -86,7 +86,6 @@
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
   import Brand from '@/components/icons/Brand.vue'
-  import { capitalize } from '@/js/composable/capitalize'
   
   const user = {
     name: 'Tom Cook',
