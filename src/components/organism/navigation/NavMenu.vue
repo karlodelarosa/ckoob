@@ -96,7 +96,7 @@
   }
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', current: true },
-    { name: 'Reports', href: '/reports', current: false },
+    // { name: 'Reports', href: '/reports', current: false },
     { name: 'Projects', href: '/projects', current: false },
   ]
   const userNavigation = [
