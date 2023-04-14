@@ -83,7 +83,7 @@ export default {
                     authSuccess.value = true
 
                     setTimeout(() => {
-                        router.push({ name: 'Dashboard' })
+                        router.push({ name: 'Introduction' })
                     }, 3000)
 
 

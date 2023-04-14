@@ -103,7 +103,8 @@
     { name: 'Projects', href: '/projects' },
   ]
   const userNavigation = [
-    // { name: 'Your Profile', href: '#' },
+    { name: 'Your Profile', href: '/profile' },
+    { name: 'Settings', href: '/settings' },
     // { name: 'Settings', href: '#' },
     { name: 'Sign out', href: '/' },
   ]
